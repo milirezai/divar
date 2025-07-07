@@ -96,7 +96,7 @@ class Routing{
     }
 
     public function error404()
-    {//http://localhost/divar/system/Router/View/404/
+    {
       http_response_code(404);
       include __DIR__ . DIRECTORY_SEPARATOR . 'View'.DIRECTORY_SEPARATOR.'404'.DIRECTORY_SEPARATOR .'index.html';
       exit;
