@@ -22,7 +22,7 @@ use PDOException;
 
         private function getDBConnection()
         {
-            $options=array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ);
+            $options=array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC);
             try
             {
                 return new PDO("mysql:host=".DBHOST.";dbname=".DBNAME,DBUSERNAME,DBPASSWORD,$options);
