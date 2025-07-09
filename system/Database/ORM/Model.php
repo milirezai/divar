@@ -8,8 +8,7 @@ use System\Database\Traits\HasRelation;
 use System\Database\Traits\HasQueryBuilder;
 use System\Database\Traits\HasMethodCaller;
  
-// abstract class Model
-// {
-//     use HasAttributes,HasCRUD,HasSoftDelete,HasRelation,HasQueryBuilder,HasMethodCaller;
-// }
- 
+ abstract class Model
+ {
+     use HasAttributes,HasCRUD,HasSoftDelete,HasRelation,HasQueryBuilder,HasMethodCaller;
+ }

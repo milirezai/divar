@@ -36,7 +36,7 @@ trait HasQueryBuilder
     # order By
     protected function setOrderBy($name,$expression)
     {
-         array_push($this->orderBy,$name.' '.$expression);
+         array_push($this->orderBy,$this->getAttributeName($name).' '.$expression);
     }
     protected function resetOrderBy()
     {
@@ -117,7 +117,7 @@ trait HasQueryBuilder
     protected function getCount()
     {
         $query = '';
-        $query .= 'SELECT COUNT(*) FROM $this->table';
+        $query .= "SELECT COUNT(".$this->getTableName().".*) FROM ".$this->getTableName();
         # where
         if(!empty($this->where))
         {
@@ -142,5 +142,12 @@ trait HasQueryBuilder
         }
         return $statement->fetchColumn();
     }
-
+    protected function getTableName()
+    {
+        return '`'.$this->table.'`';
+    }
+    protected function getAttributeName($attribute)
+    {
+        return '`'.$this->table.'`.`'.$attribute.'` ';
+    }
 }
