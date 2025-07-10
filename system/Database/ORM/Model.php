@@ -11,4 +11,13 @@ use System\Database\Traits\HasMethodCaller;
  abstract class Model
  {
      use HasAttributes,HasCRUD,HasSoftDelete,HasRelation,HasQueryBuilder,HasMethodCaller;
+     protected $table;
+     protected $fillable= [];
+     protected $hidden= [];
+     protected $casts= [];
+     protected $primaryKey= 'id';
+     protected $createdAT= 'createdAT';
+     protected $updatedAT= 'updatedAT';
+     protected $deletedAT= null;
+     protected $collection= [];
  }

@@ -1,9 +1,38 @@
 <?php
-var_dump('miad');
-class ali
-{
-    public static function milad()
-    {
-        print_r(['miladj','milad']);
-    }
-}ali::milad();
+namespace System\Database\Traits
+
+trait  HasAttributes
+ {
+     private function registerAttribute()
+     {
+
+     }
+     protected function arrayToAttribute()
+     {
+
+     }
+     protected function arrayToObjects()
+     {
+
+     }
+     private function inHiddenAttributes()
+     {
+
+     }
+     private function inCastsAttributes()
+     {
+
+     }
+     private function castDecodeValue()
+     {
+
+     }
+     private function castEncodeValue()
+     {
+
+     }
+     private function arrayToCastEncodeValue()
+     {
+
+     }
+ }
