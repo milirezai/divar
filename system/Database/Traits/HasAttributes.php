@@ -8,8 +8,8 @@ trait  HasAttributes
      {
          $this->inCastsAttributes($attribute) == true ? $object->$attribute = $this->castDecodeValue($attribute,$value) : $object->$attribute=$value;
      }
-     # arrayToAttribute
-     protected function arrayToAttribute(array $array , $object = null)
+     # arrayToAttributes
+     protected function arrayToAttributes(array $array , $object = null)
      {
          if (!$object)
          {
@@ -30,7 +30,7 @@ trait  HasAttributes
          $collection= [];
          foreach ($array as $value)
          {
-             $object=$this->arrayToAttribute($value);
+             $object=$this->arrayToAttributes($value);
              array_push($collection,$object);
          }
          $this->collection=$collection;
