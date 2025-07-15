@@ -3,6 +3,20 @@ namespace System\Database\Traits;
 use System\Database\DBConnection\DBConnection;
 trait HasCRUD
 {
+    # createMethod
+    protected  function create($values)
+    {
+        $values= $this->arrayToCastEncodeValue($values);
+        $this->arrayToAttributes($values,$this);
+        return $this->save();
+    }
+    # updateMethod
+    protected function update($values)
+    {
+        $values= $this->arrayToCastEncodeValue($values);
+        $this->arrayToAttributes($values,$this);
+        return $this->save();
+    }
     # whereMethod
     protected function where($attribute,$firestValue,$secondValue = null)
     {
@@ -88,6 +102,57 @@ trait HasCRUD
         $this->setLimit($from,$number);
         $this->setAllowedMethods(["limit","get","paginate"]);
         return $this;
+    }
+    # getMethod
+    protected function get($array = [])
+    {
+        if ($this->sql)
+        {
+            if (empty($array))
+            {
+                $fields=$this->getTableName().".*";
+            }
+            else
+            {
+                foreach ($array as $key => $fields)
+                {
+                    $array[$key] = $this->getAttributeName($fields);
+                }
+                $fields=implode(",",$array);
+            }
+            $this->setSql("SELECT $fields".$this->getTableName());
+        }
+        $statement=$this->executeQuery();
+        $data=$statement->fetchAll();
+        if ($data)
+        {
+            $this->arrayToAttributes($data);
+            return $this->collection;
+        }
+        return [];
+    }
+    # paginateMethod
+    protected function paginate($perPage)
+    {
+        $totalRows= $this->getCount();
+        $currentPage= isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $totalPages=ceil($totalRows / $perPage);
+        $currentPage= min($currentPage , $totalPages);
+        $currentPage= max($currentPage , $totalPages);
+        $currentRow= ($currentPage - 1) * $perPage;
+        $this->setLimit($currentRow , $perPage);
+        if ($this->sql == "")
+        {
+            $this->setSql("SELECT ".$this->getTableName().".* ".$this->getTableName());
+        }
+        $statement=$this->executeQuery();
+        $data=$statement->fetchAll();
+        if ($data)
+        {
+            $this->arrayToAttributes($data);
+            return $this->collection;
+        }
+        return [];
     }
     # findMethod
     protected function find($id)
