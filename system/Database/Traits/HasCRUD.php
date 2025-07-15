@@ -4,21 +4,21 @@ use System\Database\DBConnection\DBConnection;
 trait HasCRUD
 {
     # createMethod
-    protected  function create($values)
+    protected  function createMethod($values)
     {
         $values= $this->arrayToCastEncodeValue($values);
         $this->arrayToAttributes($values,$this);
-        return $this->save();
+        return $this->saveMethod();
     }
     # updateMethod
-    protected function update($values)
+    protected function updateMethod($values)
     {
         $values= $this->arrayToCastEncodeValue($values);
         $this->arrayToAttributes($values,$this);
-        return $this->save();
+        return $this->saveMethod();
     }
     # whereMethod
-    protected function where($attribute,$firestValue,$secondValue = null)
+    protected function whereMethod($attribute,$firestValue,$secondValue = null)
     {
         if ($secondValue === null)
         {
@@ -36,7 +36,7 @@ trait HasCRUD
         return $this;
     }
     # whereOrMethod
-    protected function whereOr($attribute,$firestValue,$secondValue = null)
+    protected function whereOrMethod($attribute,$firestValue,$secondValue = null)
     {
         if ($secondValue === null)
         {
@@ -54,7 +54,7 @@ trait HasCRUD
         return $this;
     }
     # whereNullMethod
-    protected function whereNull($attribute)
+    protected function whereNullMethod($attribute)
     {
         $condition= $this->getAttributeName($attribute)."IS NULL";
         $operator= "AND";
@@ -63,7 +63,7 @@ trait HasCRUD
         return $this;
     }
     # whereNotNullMethod
-    protected function whereNotNull($attribute)
+    protected function whereNotNullMethod($attribute)
     {
         $condition= $this->getAttributeName($attribute)." IS NOT NULL";
         $operator= "AND";
@@ -72,7 +72,7 @@ trait HasCRUD
         return $this;
     }
     # whereInMethod
-    protected function whereIN($attribute,$values)
+    protected function whereINMethod($attribute,$values)
     {
         if (is_array($values))
         {
@@ -90,21 +90,21 @@ trait HasCRUD
         }
     }
     # orderByMethod
-    protected function orderBy($attribute,$expression)
+    protected function orderByMethod($attribute,$expression)
     {
         $this->setOrderBy($attribute,$expression);
         $this->setAllowedMethods(["limit","orderBy","get","paginate"]);
         return $this;
     }
     # limitMethod
-    protected function limit($from,$number)
+    protected function limitMethod($from,$number)
     {
         $this->setLimit($from,$number);
         $this->setAllowedMethods(["limit","get","paginate"]);
         return $this;
     }
     # getMethod
-    protected function get($array = [])
+    protected function getMethod($array = [])
     {
         if ($this->sql)
         {
@@ -155,7 +155,7 @@ trait HasCRUD
         return [];
     }
     # findMethod
-    protected function find($id)
+    protected function findMethod($id)
     {
         $this->setSql("SELECT * FROM ".$this->getTableName());
         $this->setWhere("AND",$this->getAttributeName($this->primaryKey)."= ?");
@@ -170,7 +170,7 @@ trait HasCRUD
         return null;
     }
     # allMethod
-    protected function all()
+    protected function allMethod()
     {
         $this->setSql("SELECT * FROM ".$this->getTableName());
         $statement=$this->executeQuery();
@@ -183,13 +183,13 @@ trait HasCRUD
         return [];
     }
     # deleteMethod
-    protected function delete($id = null)
+    protected function deleteMethod($id = null)
     {
         $object= $this;
         $this->resetQuery();
         if ($id)
         {
-            $object=$this->find($id);
+            $object=$this->findMethod($id);
             $this->resetQuery();
         }
         $object->setSql("DELETE FORM ".$object->getTableName());
@@ -198,7 +198,7 @@ trait HasCRUD
         return $object->executeQuery();
     }
     # saveMethod
-    protected function save()
+    protected function saveMethod()
     {
         $fileString= $this->fill();
         if (!isset($this->{$this->primaryKey}))
@@ -215,7 +215,7 @@ trait HasCRUD
         $this->resetQuery();
         if (!isset($this->{$this->primaryKey}))
         {
-            $object = $this->find(DBConnection::newInsertId());
+            $object = $this->findMethod(DBConnection::newInsertId());
             $defaultVars = get_class_vars(get_called_class());
             $allVars = get_object_vars($object);
             $differentVars = array_diff(array_keys($allVars), array_keys($defaultVars));
