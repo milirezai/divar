@@ -99,7 +99,7 @@ trait HasQueryBuilder
             $query .= ' LIMIT '.$this->limit['from'].' , '.$this->limit['number'].' ';
         }
         $query .= ' ;';
-        echo $query.'<hr/>';
+        echo $query;
         $dbConnection=DBConnection::dbConnection();
         $statement=$dbConnection->prepare($query);
         # bindValues
@@ -116,8 +116,9 @@ trait HasQueryBuilder
     # getCount
     protected function getCount()
     {
+        $this->resetSql();
         $query = '';
-        $query .= "SELECT COUNT(".$this->getTableName().".*) FROM ".$this->getTableName();
+        $query .= "SELECT COUNT(*) FROM ".$this->getTableName();
         # where
         if(!empty($this->where))
         {

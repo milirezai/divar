@@ -14,7 +14,7 @@ trait  HasAttributes
          if (!$object)
          {
              $className=get_called_class();
-             $object=new $className;
+             $object=new $className();
          }
          foreach ($array as $attribute => $value)
          {

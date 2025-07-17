@@ -106,7 +106,7 @@ trait HasCRUD
     # getMethod
     protected function getMethod($array = [])
     {
-        if ($this->sql)
+        if ($this->sql == '')
         {
             if (empty($array))
             {
@@ -120,43 +120,42 @@ trait HasCRUD
                 }
                 $fields=implode(",",$array);
             }
-            $this->setSql("SELECT $fields".$this->getTableName());
+            $this->setSql("SELECT $fields FROM ".$this->getTableName());
         }
         $statement=$this->executeQuery();
         $data=$statement->fetchAll();
         if ($data)
         {
-            $this->arrayToAttributes($data);
+            $this->arrayToObjects($data);
             return $this->collection;
         }
         return [];
     }
     # paginateMethod
-    protected function paginate($perPage)
+    protected function paginateMethod($perPage)
     {
-        $totalRows= $this->getCount();
-        $currentPage= isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $totalPages=ceil($totalRows / $perPage);
-        $currentPage= min($currentPage , $totalPages);
-        $currentPage= max($currentPage , 1);
-        $currentRow= ($currentPage - 1) * $perPage;
-        $this->setLimit($currentRow , $perPage);
-        if ($this->sql == "")
-        {
-            $this->setSql("SELECT ".$this->getTableName().".* ".$this->getTableName());
+        $totalRows = $this->getCount();
+        $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $totalPages = ceil($totalRows / $perPage);
+        $currentPage = min($currentPage, $totalPages);
+        $currentPage = max($currentPage, 1);
+        $currentRow = ($currentPage - 1) * $perPage;
+        $this->setLimit($currentRow, $perPage);
+        if($this->sql == ''){
+            $this->setSql("SELECT ".$this->getTableName().".* FROM ".$this->getTableName());
         }
-        $statement=$this->executeQuery();
-        $data=$statement->fetchAll();
-        if ($data)
-        {
-            $this->arrayToAttributes($data);
-            return $this->collection;
+        $statement = $this->executeQuery();
+        $data = $statement->fetchAll();
+        if ($data){
+           $this->arrayToObjects($data);
+           return $this->collection;
         }
         return [];
     }
     # findMethod
     protected function findMethod($id)
     {
+        
         $this->setSql("SELECT * FROM ".$this->getTableName());
         $this->setWhere("AND",$this->getAttributeName($this->primaryKey)."= ?");
         $this->addValue($this->primaryKey,$id);
@@ -177,7 +176,7 @@ trait HasCRUD
         $data=$statement->fetchAll();
         if ($data)
         {
-            $this->arrayToAttributes($data);
+            $this->arrayToObjects($data);
             return $this->collection;
         }
         return [];

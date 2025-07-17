@@ -52,13 +52,11 @@ trait HasRelation
     # belongsToMethod
     protected function belongsTo($model, $foreignKey, $localKey)
     {
-
         if ($this->{$this->primaryKey})
         {
             $modelObject= new $model();
             return $modelObject->getBelongsToRelation($this->table, $foreignKey, $localKey, $this->$foreignKey);
         }
-
     }
     # getBelongsToRelationMethod
     public function getBelongsToRelation($table, $foreignKey, $otherKey, $foreignKeyValue)
@@ -68,16 +66,16 @@ trait HasRelation
         $this->table= 'b';
         $this->addValue($foreignKey,$foreignKeyValue);
         $statement=$this->executeQuery();
-        $data=$statement->fetchAll();
+        $data=$statement->fetch();
         if ($data)
         {
-            $this->arrayToAttributes($data);
+             return $this->arrayToAttributes($data);
         }
         return null;
     }
     # belongsToManyMethod
     protected function belongsToMany($model, $commonTable, $localKey, $middleForeignKey, $middleRelation, $foreignKey )
-    {
+    {        
         if($this->{$this->primaryKey})
         {
             $modelObject = new $model();
