@@ -21,8 +21,6 @@ class ViewBuilder
         $this->checkExtendsContent();
         $this->checkIncludeContent();
         Composer::setViews($this->viewNameArray);
-        $appServiceProvider= new AppServiceProvider();
-        $appServiceProvider->boot();
         $this->vars = Composer::getVars;
     }
 
