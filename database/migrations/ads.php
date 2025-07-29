@@ -1,15 +1,5 @@
 <?php
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | 
-    |--------------------------------------------------------------------------
-    |
-    |
-    |
-    */
-
 return [
     "
     -- phpMyAdmin SQL Dump
@@ -33,10 +23,10 @@ SET time_zone = \"+00:00\";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `ads`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `ads` (
   `id` int(11) NOT NULL,
   `title` varchar(191) NOT NULL,
   `description` text NOT NULL,
@@ -68,9 +58,9 @@ CREATE TABLE `users` (
 --
 
 --
--- Indexes for table `users`
+-- Indexes for table `ads`
 --
-ALTER TABLE `users`
+ALTER TABLE `ads`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -78,9 +68,9 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `ads`
 --
-ALTER TABLE `users`
+ALTER TABLE `ads`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
     "

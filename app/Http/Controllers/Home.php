@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use System\Database\DBBuilder\DBBuilder;
 
 class Home extends Controller
 {
