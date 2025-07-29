@@ -22,7 +22,7 @@ return
     | The name of the project database is stored here.
     |
     */
-    "DBNAME" => "project name",
+    "DBNAME" => "divar",
 
     /*
     |--------------------------------------------------------------------------

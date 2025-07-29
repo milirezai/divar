@@ -13,7 +13,7 @@ return
     | other UI elements where an application name needs to be displayed.
     |
     */
-    "APP_TITLE" => "Damavand",
+    "APP_TITLE" => "divar",
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return
     | is your domain address
     |
     */
-    "BASE_URL" => "http://localhost:8080",
+    "BASE_URL" => "http://localhost:8040",
 
     /*
     |--------------------------------------------------------------------------
