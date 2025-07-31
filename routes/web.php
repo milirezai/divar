@@ -39,3 +39,9 @@ Route::post('store','Home@store','store');
 Route::get('edit/{id}','Home@edit','edit');
 Route::put('/update/{id}','Home@update','update');
 Route::delete('delete/{id}','Home@destroy','delete');
+
+
+
+# admin routes
+Route::get("/admin","AdminController@index","admin.index"); 
+

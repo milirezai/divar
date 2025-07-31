@@ -7,7 +7,7 @@ class Home extends Controller
        
     public function index()
     {
-        return view("admin.layouts.app",[]);
+        return view("welcom",[]);
     }
 
     public function Damavand()

@@ -8,7 +8,6 @@ use System\Session\Session;
 class Auth
 {
     private $redirectTo= "/login";
-
     private function userMethod()
     {
 

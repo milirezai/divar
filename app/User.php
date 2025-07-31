@@ -25,7 +25,7 @@ class User extends Model
     | Stores the table name represented by this class.
     |
     */
-     protected $table;
+     protected $table = "users";
 
     /*
     |--------------------------------------------------------------------------

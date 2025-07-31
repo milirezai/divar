@@ -20,13 +20,17 @@
 
                         <li class="dropdown dropdown-user nav-item">
                             <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">حسن خسروجردی</span>
-                                    <span class="user-status active">آنلاین </span></div><span><img class="round" src="" alt="avatar" height="40" width="40"></span>
+                                <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600"><?= \System\Auth\Auth::user()->first_name . ' ' . \System\Auth\Auth::user()->last_name ?></span>
+                                    <span class="user-status active">آنلاین </span>
+                                </div>
+                                    <span><img class="round" src="<?= asset(\System\Auth\Auth::user()->avatar) ?>" alt="avatar" height="40" width="40"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href=""><i class="feather icon-power"></i> خروج</a>
                             </div>
                         </li>
+
+                        
                     </ul>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <?php
-function view($dir,$vars)
+function view($dir,$vars=[])
 {
     $viewBuilder = new \System\View\ViewBuilder();
     $viewBuilder->run($dir);
