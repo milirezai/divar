@@ -43,5 +43,4 @@ Route::delete('delete/{id}','Home@destroy','delete');
 
 
 # admin routes
-Route::get("/admin","AdminController@index","admin.index"); 
-
+Route::get("/admin","AdminController@index","admin.index");

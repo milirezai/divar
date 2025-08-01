@@ -11,7 +11,8 @@ class AdminController extends Controller
         Auth::check();
         if (Auth::user()->user_type != "admin")
         {
-            die("no acsess");
+            return redirect("/login");
+            exit();
         }
     }
     public function index()

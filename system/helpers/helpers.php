@@ -1,4 +1,5 @@
 <?php
+
 function view($dir,$vars=[])
 {
     $viewBuilder = new \System\View\ViewBuilder();
@@ -118,7 +119,7 @@ function redirect($url)
     $url = trim($url, "/ ");
     $url = strpos($url , currentDomain()) == 0 ? $url : currentDomain(). "/".$url;
     header("Location: ".$url);
-    exit();
+    exit;
 }
 
 function back()
