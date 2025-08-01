@@ -34,13 +34,17 @@ use System\Router\Web\Route;
     */ 
     
 Route::get('/','Home@index','index');
-Route::get('Damavand/Framework','Home@Damavand','Damavand-Framework');
-Route::post('store','Home@store','store');
-Route::get('edit/{id}','Home@edit','edit');
-Route::put('/update/{id}','Home@update','update');
-Route::delete('delete/{id}','Home@destroy','delete');
-
-
 
 # admin routes
 Route::get("/admin","AdminController@index","admin.index");
+
+// category
+Route::get("/admin/category","CategoryController@index","admin.category.index");
+Route::get("/admin/category/create","CategoryController@create","admin.category.create");
+Route::post("/admin/category/store","CategoryController@store","admin.category.store");
+Route::get("/admin/category/edit/{id}","CategoryController@edit","admin.category.edit");
+Route::put("/admin/category/edit/{id}","CategoryController@update","admin.category.update");
+Route::delete("/admin/category/delete/{id}","CategoryController@destroy","admin.category.delete");
+
+
+

@@ -76,31 +76,28 @@ trait HasQueryBuilder
     # executeQuery
     protected function executeQuery()
     {
+
         $query = '';
         $query .= $this->sql;
-        # where
-        if(!empty($this->where))
-        {
+
+        if(!empty($this->where)){
+
             $whereString = '';
-            foreach ($this->where as $where) 
-            {
-                $whereString == '' ? $whereString=$where['condition'] : $whereString.' '.$where['operator'].' '.$where['condition'];
+            foreach($this->where as $where){
+                $whereString == '' ?  $whereString .= $where['condition'] : $whereString .= ' '.$where['operator'].' '.$where['condition'];
             }
             $query .= ' WHERE '.$whereString;
         }
-        # order by
-        if(!empty($this->orderBy))
-        {
-            $query .= ' ORDER BY '.implode(' , ',$this->orderBy);
+
+        if(!empty($this->orderBy)){
+            $query .= ' ORDER BY '. implode(', ',$this->orderBy);
         }
-        # limit
-        if(!empty($this->limit))
-        {
-            $query .= ' LIMIT '.$this->limit['from'].' , '.$this->limit['number'].' ';
+        if(!empty($this->limit)){
+            $query .= ' limit '.$this->limit['from'] . ' , '. $this->limit['number'].' ';
         }
         $query .= ' ;';
-        $dbConnection=DBConnection::dbConnection();
-        $statement=$dbConnection->prepare($query);
+        $pdoInstance = DBConnection::dbConnection();
+        $statement = $pdoInstance->prepare($query);
         sizeof($this->bindValues) > 0 ? $statement->execute($this->bindValues) : $statement->execute() ;
         return $statement;
     }

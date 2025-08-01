@@ -1,7 +1,11 @@
 <?php
 namespace App\Http\Controllers;
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use System\Auth\Auth;
+
+
+use App\Category;
+use App\User;
 
 class AdminController extends Controller
 {
@@ -17,6 +21,9 @@ class AdminController extends Controller
     }
     public function index()
     {
+        // $all= User::all();
+        // echo "<pre>";
+        // dd($all);
         return view("admin.index");
     }
 }

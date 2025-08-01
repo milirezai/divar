@@ -155,7 +155,6 @@ trait HasCRUD
     # findMethod
     protected function findMethod($id)
     {
-        
         $this->setSql("SELECT * FROM ".$this->getTableName());
         $this->setWhere("AND",$this->getAttributeName($this->primaryKey)."= ?");
         $this->addValue($this->primaryKey,$id);
