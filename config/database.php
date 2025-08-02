@@ -1,5 +1,5 @@
 <?php
-
+use System\Config\Env;
 return
 [
 
@@ -12,7 +12,7 @@ return
     | By default, the IP of the mysql database host is selected.
     |
     */
-    "DBHOST" => "127.0.0.1",
+    "DBHOST" => Env::get("DB_HOST"),
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return
     | The name of the project database is stored here.
     |
     */
-    "DBNAME" => "divar",
+    "DBNAME" => Env::get("DB_NAME"),
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ return
     | if you haven't changed it before.
     |
     */
-    "DBUSERNAME" => "root",
+    "DBUSERNAME" => Env::get("DB_USERNAME"),
 
      /*
     |--------------------------------------------------------------------------
@@ -46,6 +46,6 @@ return
     | If you haven't changed it before.
     | 
     */
-    "DBPASSWORD" => ""
+    "DBPASSWORD" => Env::get("DB_PASSWORD")
     
 ];

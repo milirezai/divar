@@ -1,6 +1,6 @@
 <?php
-
-return 
+use System\Config\Env;
+return
 [
 
     /*
@@ -13,7 +13,7 @@ return
     | other UI elements where an application name needs to be displayed.
     |
     */
-    "APP_TITLE" => "divar",
+    "APP_TITLE" => Env::get("APP_NAME"),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return
     | is your domain address
     |
     */
-    "BASE_URL" => "http://localhost:8040",
+    "BASE_URL" => Env::get("APP_URL"),
 
     /*
     |--------------------------------------------------------------------------
