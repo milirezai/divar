@@ -20,9 +20,9 @@ class Categories extends Model
 
      protected $fillable= ["name","parent_id"];
 
-     protected $createdAT= 'createdAT';
+     protected $createdAT= 'created_at';
 
-     protected $updatedAT= 'updatedAT';
+     protected $updatedAT= 'updated_at';
 
      protected $deletedAT= "deleted_at";
     

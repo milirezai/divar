@@ -13,6 +13,7 @@ function view($dir,$vars=[])
 
 function dd($value, $die = true)
 {
+    echo "<pre>";
     var_dump($value);
     if ($die)
         exit();
@@ -114,13 +115,7 @@ function currentDomain()
     return $httpProtocol.$currentUrl;
 }
 
-function redirect($url)
-{
-    $url = trim($url, "/ ");
-    $url = strpos($url , currentDomain()) == 0 ? $url : currentDomain(). "/".$url;
-    header("Location: ".$url);
-    exit;
-}
+
 
 function back()
 {
@@ -211,5 +206,14 @@ function array_dot($array, $return_array = array(), $return_key = '') {
 
 function currentUrl()
 {
-    currentDomain().$_SERVER['REQUEST_URI'];
+   return currentDomain().$_SERVER['REQUEST_URI'];
+}
+
+
+function redirect($url)
+{
+    $url = trim($url, '/ ');
+    $url = strpos($url, currentDomain()) === 0 ?  $url : currentDomain() . '/' . $url;
+    header("Location: ".$url);
+    exit;
 }
