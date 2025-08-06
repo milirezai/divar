@@ -15,8 +15,8 @@ use System\Database\Traits\HasMethodCaller;
      protected $hidden= [];
      protected $casts= [];
      protected $primaryKey= 'id';
-     protected $createdAT= 'createdAT';
-     protected $updatedAT= 'updatedAT';
-     protected $deletedAT= null;
+     protected $createdAT= 'created_at';
+     protected $updatedAT= 'updated_at';
+     protected $deletedAT= 'deleted_at';
      protected $collection= [];
  }

@@ -33,7 +33,7 @@
                                                     <tr role="row" class="odd">
                                                         <td class="sorting_1"><?= $category->id ?></td>
                                                         <td><?= $category->name ?></td>
-                                                        <td><?= $category->parent_id ?></td>
+                                                        <td><?= empty($category->parent_id) ? '' : $category->parent()->name ?></td>
                                                         <td style="min-width: 6rem; text-align: left;">
                                                             <a href="<?= route("admin.category.edit", [$category->id]) ?>" class="btn btn-info waves-effect waves-light">ویرایش</a>
 
