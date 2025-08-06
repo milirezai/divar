@@ -190,8 +190,8 @@ trait HasCRUD
             $object=$this->findMethod($id);
             $this->resetQuery();
         }
-        $object->setSql("DELETE FORM ".$object->getTableName());
-        $object->setWhere("AND",$this->getAttributeName($this->primaryKey)."= ?");
+        $object->setSql("DELETE FROM ".$object->getTableName());
+        $object->setWhere("AND",$this->getAttributeName($object->primaryKey)."= ?");
         $object->addValue($object->primaryKey,$object->{$object->primaryKey});
         return $object->executeQuery();
     }

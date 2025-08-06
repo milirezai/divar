@@ -25,7 +25,8 @@
                                         <div class="col-md-6">
                                             <fieldset class="form-group">
                                                 <label for="helperText">نام دسته</label>
-                                                <input value="<?= old('name') ?>" name="name" type="text" id="helperText" class="form-control" placeholder="نام ..." >
+                                                <input value="<?= old('name') ?>" name="name" type="text" id="helperText" class="form-control <?= errorClass('name') ?>" placeholder="نام ..." >
+                                                <?= errorText('name') ?>
                                             </fieldset>
                                         </div>
 
@@ -33,13 +34,14 @@
                                             <fieldset class="form-group">
                                                 <div class="form-group">
                                                     <label for="helperText">دسته والد</label>
-                                                    <select name="parent_id" class="select2 form-control" >
+                                                    <select name="parent_id" class="select2 form-control <?= errorClass('parent_id') ?>" >
                                                         <option value="">درصورت وجود والد انتخاب شود</option>
                                                         <?php foreach ($parentCategory as $category) { ?>
                                                             <option <?= old('parent_id') == $category->id ? 'selected' : ''; ?> value="<?= $category->id ?>"><?= $category->name ?></option>
                                                         <?php  } ?>
 
                                                     </select>
+                                                    <?= errorText('parent_id') ?>
                                                 </div>
                                             </fieldset>
                                         </div>

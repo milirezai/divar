@@ -36,6 +36,7 @@
                                                         <td><?= $category->parent_id ?></td>
                                                         <td style="min-width: 6rem; text-align: left;">
                                                             <a href="<?= route("admin.category.edit", [$category->id]) ?>" class="btn btn-info waves-effect waves-light">ویرایش</a>
+
                                                             <form class="d-inline" action="<?= route("admin.category.delete",[$category->id]) ?>" method="post">
                                                                 <input type="hidden" name="_method" value="delete">
                                                                 <button type="submit" class="btn btn-danger waves-effect waves-light">حذف</button>

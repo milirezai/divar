@@ -76,7 +76,6 @@ trait HasQueryBuilder
     # executeQuery
     protected function executeQuery()
     {
-
         $query = '';
         $query .= $this->sql;
 
@@ -98,7 +97,7 @@ trait HasQueryBuilder
         $query .= ' ;';
         $pdoInstance = DBConnection::dbConnection();
         $statement = $pdoInstance->prepare($query);
-        sizeof($this->bindValues) > 0 ? $statement->execute($this->bindValues) : $statement->execute() ;
+       sizeof($this->bindValues) > 0 ? $statement->execute($this->bindValues) : $statement->execute();
         return $statement;
     }
     # getCount
