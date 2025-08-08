@@ -19,7 +19,7 @@
             <li class=" navigation-header"><span>لینک ها</span></li>
             <li class=" nav-item <?= active_sidebar(route('admin.index'),false) ?>"><a href="<?= route('admin.index') ?>"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">خانه</span></a></li>
             <li class=" nav-item <?= active_sidebar(route("admin.category.index")) ?>"><a href="<?= route('admin.category.index') ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">دسته بندی</span></a></li>
-            <li class=" nav-item "><a href=""><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">اخبار</span></a></li>
+            <li class=" nav-item <?= active_sidebar(route("admin.category.index")) ?>"><a href="<?= route('admin.blog.index') ?>"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">بلاگ</span></a></li>
             <li class=" nav-item"><a href=""><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">آگهی</span></a></li>
             <li class=" nav-item "><a href=""><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">اسلاید شو</span></a></li>
             <li class=" nav-item"><a href=""><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">نظرات</span></a></li>
