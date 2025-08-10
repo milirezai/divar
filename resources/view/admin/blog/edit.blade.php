@@ -92,3 +92,9 @@
     <!-- END: Content-->
 
 @endsection
+@section('script')
+    <script src="<?= asset('ckeditor/ckeditor.js') ?>"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('body')
+    </script>
+@endsection
