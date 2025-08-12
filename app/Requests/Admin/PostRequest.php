@@ -8,13 +8,27 @@ class PostRequest extends Request
 {
     public function rules()
     {
-        return
-            [
-//                'title' => 'required|max:300',
-//                'published_at' => 'required',
-//                'image' => 'required',
-//                'body' => 'required',
-//                'cat_id' => 'required'
-            ];
+        if (methodField() == 'put')
+        {
+            return
+                [
+                    'title' => 'max:255',
+                    'image' => 'file|mimes:png,jpg',
+                    'published_at' => 'date',
+                    'body' => 'min:50',
+                    'cat_id' => 'exists:categories,id',
+                ];
+        }
+        else
+        {
+            return
+                [
+                    'title' => 'required|max:255',
+                    'image' => 'file|required|mimes:png,jpg,jpeg',
+                    'published_at' => 'required|date',
+                    'body' => 'required|min:50',
+                    'cat_id' => 'required|exists:categories,id',
+                ];
+        }
     }
 }

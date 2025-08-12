@@ -2,9 +2,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\AdminController;
+use App\Post;
 use App\Requests\Admin\PostRequest;
 use App\Categories;
-use App\Post;
+use System\Auth\Auth;
+use App\Http\Services\Upload;
 
 class PostController extends AdminController
 {
@@ -20,9 +22,14 @@ class PostController extends AdminController
     }
     public function store()
     {
-        $request= new PostRequest();
-        $input = $request->all();
-        dd($input);
+        $request = new PostRequest();
+        $inputs = $request->all();
+        $inputs['user_id'] = Auth::user()->id;
+        $path = 'imags/posts/'.date('Y/M/d/');
+        $name_image=date('Y_m_d_H_i_s_').rand(10,99);
+        $inputs['image']=Upload::image($request->file('image'), $path, $name_image, 1080, 800);
+        Post::create($inputs);
+        return redirect("admin/blog");
     }
     public function edit($id)
     {

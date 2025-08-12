@@ -217,3 +217,17 @@ function redirect($url)
     header("Location: ".$url);
     exit;
 }
+
+function fileUpload($file,$name,$path)
+{
+    $target_dir = $path;
+    $target_file = $target_dir .
+        basename($file["name"]);
+
+    if(move_uploaded_file($file["tmp_name"], $target_file)) {
+        return "The file ".basename($file["name"]). " has been uploaded.";
+    }
+    else {
+        return "Sorry, there was an error uploading your file.";
+    }
+}

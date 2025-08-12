@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasSoftDelete;
     protected $table = 'posts';
-    protected $fillable = ['title','body','img','user_id','cat_id','published_at','status'];
+    protected $fillable = ['title','body','image','user_id','cat_id','published_at','status'];
     protected $casts = ['img' => 'array'];
     public function author()
     {

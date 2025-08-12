@@ -40,7 +40,7 @@
                                             <td><?= $post->title ?></td>
                                             <td><?= $post->category()->name ?></td>
                                             <td><?= $post->author()->first_name.' '.$post->author()->last_name ?></td>
-                                            <td><img style="width: 90px;" src="<?= asset($post->image) ?>" alt=""></td>
+                                            <td><a href="<?= asset($post->image) ?>"><img style="width: 90px;" src="<?= asset($post->image) ?>"></a></td>
                                             <td style="min-width: 16rem; text-align: left;">
                                                 <a href="<?= route("admin.blog.edit",[$post->id]) ?>" class="btn btn-info waves-effect waves-light">ویرایش</a>
 
