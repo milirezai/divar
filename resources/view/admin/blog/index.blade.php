@@ -42,8 +42,8 @@
                                             <td><?= $post->author()->first_name.' '.$post->author()->last_name ?></td>
                                             <td><a href="<?= asset($post->image) ?>"><img style="width: 90px;" src="<?= asset($post->image) ?>"></a></td>
                                             <td style="min-width: 16rem; text-align: left;">
+                                                <a href="#" class="btn btn-success waves-effect waves-light">وضعیت</a>
                                                 <a href="<?= route("admin.blog.edit",[$post->id]) ?>" class="btn btn-info waves-effect waves-light">ویرایش</a>
-
                                                 <form class="d-inline" action="<?= route("admin.blog.delete",[$post->id]) ?>" method="post">
                                                     <input type="hidden" name="_method" value="delete">
                                                     <button type="submit" class="btn btn-danger waves-effect waves-light">حذف</button>

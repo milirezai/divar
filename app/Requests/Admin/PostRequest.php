@@ -12,8 +12,8 @@ class PostRequest extends Request
         {
             return
                 [
-                    'title' => 'max:255',
-                    'image' => 'file|mimes:png,jpg',
+                    'title' => 'min:10|max:300',
+                    'image' => 'file|mimes:png,jpg,jpeg',
                     'published_at' => 'date',
                     'body' => 'min:50',
                     'cat_id' => 'exists:categories,id',
@@ -23,7 +23,7 @@ class PostRequest extends Request
         {
             return
                 [
-                    'title' => 'required|max:255',
+                    'title' => 'required|min:10|max:300',
                     'image' => 'file|required|mimes:png,jpg,jpeg',
                     'published_at' => 'required|date',
                     'body' => 'required|min:50',

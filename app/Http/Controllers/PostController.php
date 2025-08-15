@@ -33,13 +33,25 @@ class PostController extends AdminController
     }
     public function edit($id)
     {
-        $findPost=Post::find($id);
+        $post=Post::find($id);
         $categories = Categories::all();
-        return view("admin.blog.edit",compact("findPost","categories"));
+        return view("admin.blog.edit",compact("post","categories"));
     }
-    public function update()
+    public function update($id)
     {
-        dd('update');
+        $request = new PostRequest();
+        $inputs = $request->all();
+        $inputs['id'] = $id;
+        $file = $request->file('image');
+        if (!empty($file['name']))
+        {
+            $path = 'imags/posts/'.date('Y/M/d/');
+            $name_image=date('Y_m_d_H_i_s_').rand(10,99);
+            $inputs['image']=Upload::image($file, $path, $name_image, 1080, 800);
+        }
+        $inputs['user_id'] = Auth::user()->id;
+        Post::update($inputs);
+        return redirect("admin/blog");
     }
     public function destroy($id)
     {

@@ -54,4 +54,7 @@ Route::get("/admin/blog/edit/{id}","PostController@edit","admin.blog.edit");
 Route::put("/admin/blog/update/{id}","PostController@update","admin.blog.update");
 Route::delete("/admin/blog/delete/{id}","PostController@destroy","admin.blog.delete");
 
+// ads
+Route::get("/admin/ads","AdsController@index","admin.ads.index");
+Route::get("/admin/ads/show/{id}","AdsController@show","admin.ads.show");
 

@@ -28,7 +28,7 @@
                         <div class="col-md-6">
                            <fieldset class="form-group">
                               <label for="published_at">تاریخ انتشار</label>
-                              <input value="" name="published_at" type="date" id="published_at" class="form-control <?= errorClass('published_at') ?>">
+                              <input value="<?= empty(old('published_at')) ? '' : old('published_at'); ?>" name="published_at" type="date" id="published_at" class="form-control <?= errorClass('published_at') ?>">
                                <?= errorText('published_at') ?>
                            </fieldset>
                         </div>
@@ -43,7 +43,7 @@
                            <fieldset class="form-group">
                               <div class="form-group">
                                  <label for="cat_id">دسته</label>
-                                 <select name="cat_id" class="select2 form-control ">
+                                 <select name="cat_id" class="select2 form-control <?= errorClass('cat_id') ?>">
                                      <?php foreach($categories as $categorySelect) {?>
                                     <option value="<?= $categorySelect->id ?>" <?= !empty(old('cat_id')) && $categorySelect->id === old('cat_id') ? 'selected' : '' ?>>
                                         <?= $categorySelect->name ?>

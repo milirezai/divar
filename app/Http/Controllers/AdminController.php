@@ -21,9 +21,6 @@ class AdminController extends Controller
     }
     public function index()
     {
-        // $all= User::all();
-        // echo "<pre>";
-        // dd($all);
         return view("admin.index");
     }
 }
