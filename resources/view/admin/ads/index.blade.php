@@ -17,7 +17,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">آگهی</h4>
-                            <span><a href="" class="btn btn-success">ایجاد</a></span>
+                            <span><a href="<?= route("admin.ads.create") ?>" class="btn btn-success">ایجاد</a></span>
                         </div>
                         <div class="card-content">
                             <div class="card-body card-dashboard">
@@ -44,9 +44,9 @@
                                             <td><?= $ads->category()->name ?></td>
                                             <td style="min-width: 16rem; text-align: left;">
                                                 <a href="<?= route('admin.ads.show',[$ads->id]) ?>" class="btn btn-success waves-effect waves-light btn-success">مشاهده</a>
-                                                <a href="#" class="btn btn-success waves-effect waves-light btn-warning">گالری</a>
-                                                <a href="" class="btn btn-info waves-effect waves-light">ویرایش</a>
-                                                <form class="d-inline" action="" method="post">
+                                                <a href="<?= route("admin.ads.gallery",[$ads->id]) ?>" class="btn btn-success waves-effect waves-light btn-warning">گالری</a>
+                                                <a href="<?= route("admin.ads.edit",[$ads->id]) ?>" class="btn btn-info waves-effect waves-light">ویرایش</a>
+                                                <form class="d-inline" action="<?= route("admin.ads.delete",[$ads->id]) ?>" method="post">
                                                     <input type="hidden" name="_method" value="delete">
                                                     <button type="submit" class="btn btn-danger waves-effect waves-light">حذف</button>
                                                 </form>
