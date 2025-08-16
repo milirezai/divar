@@ -56,7 +56,6 @@ Route::delete("/admin/blog/delete/{id}","PostController@destroy","admin.blog.del
 
 // ads
 Route::get("/admin/ads","AdsController@index","admin.ads.index");
-Route::get("/admin/ads/show/{id}","AdsController@show","admin.ads.show");
 Route::get("/admin/ads/gallery/{id}","AdsController@gallery","admin.ads.gallery");
 Route::get("/admin/ads/store-gallery-image/{id}","AdsController@storeGalleryImage","admin.ads.store.gallery.image");
 Route::get("/admin/ads/delete-gallery-image/{gallery_id}","AdsController@deleteGalleryImage","admin.ads.delete.gallery.image");

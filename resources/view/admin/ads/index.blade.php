@@ -28,28 +28,44 @@
                                         <tr>
                                             <th>#</th>
                                             <th>عنوان</th>
+                                            <th>دسته</th>
                                             <th>آدرس</th>
-                                            <th>نویسنده</th>
-                                            <th>دسته بندی</th>
-                                            <th style="min-width: 16rem; text-align: left;">تنظیمات</th>
+                                            <th>تصویر</th>
+                                            <th>مشخصات</th>
+                                            <th>تگ</th>
+                                            <th>کاربر</th>
+                                            <th style="width: 22rem;">تنظیمات</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php foreach ($ads_s as $ads) {  ?>
-                                        <tr role="row" class="odd">
-                                            <td class="sorting_1"><?= $ads->id ?></td>
-                                            <td><?= $ads->title ?></td>
-                                            <td><?= $ads->address ?></td>
-                                            <td><?= $ads->author()->first_name . ' ' . $ads->author()->last_name ?></td>
-                                            <td><?= $ads->category()->name ?></td>
-                                            <td style="min-width: 16rem; text-align: left;">
-                                                <a href="<?= route('admin.ads.show',[$ads->id]) ?>" class="btn btn-success waves-effect waves-light btn-success">مشاهده</a>
-                                                <a href="<?= route("admin.ads.gallery",[$ads->id]) ?>" class="btn btn-success waves-effect waves-light btn-warning">گالری</a>
-                                                <a href="<?= route("admin.ads.edit",[$ads->id]) ?>" class="btn btn-info waves-effect waves-light">ویرایش</a>
-                                                <form class="d-inline" action="<?= route("admin.ads.delete",[$ads->id]) ?>" method="post">
+                                        <?php foreach($ads_s as $advertise) { ?>
+                                        <tr>
+                                            <td><?= $advertise->id ?></td>
+                                            <td><?= $advertise->title ?></td>
+                                            <td><?= $advertise->category()->name ?></td>
+                                            <td><?= $advertise->address ?></td>
+                                            <td><img style="width: 90px;" src="<?= asset($advertise->image) ?>" alt=""></td>
+                                            <td>
+                                                <ul>
+                                                    <li>کف : <?= $advertise->floor ?></li>
+                                                    <li>سال ساخت : <?= $advertise->year ?></li>
+                                                    <li>انباری : <?= $advertise->storeroom == 1 ? 'دارد' : 'ندارد' ?></li>
+                                                    <li>بالکن : <?= $advertise->balcony == 1 ? 'دارد' : 'ندارد' ?></li>
+                                                    <li>متراژ (متر مربع) : <?= $advertise->area ?> </li>
+                                                    <li>اتاق خواب : <?= $advertise->room ?></li>
+                                                    <li>سرویس : <?= $advertise->toilet ?></li>
+                                                    <li>پارکینگ : <?= $advertise->parking == 1 ? 'دارد' : 'ندارد' ?></li>
+                                                </ul>
+                                            </td>
+                                            <td><?= $advertise->tag ?></td>
+                                            <td><?= $advertise->author()->first_name . ' ' . $advertise->author()->last_name ?></td>
+                                            <td style="width: 22rem;">
+                                                <a href="<?= route('admin.ads.gallery', ['id' => $advertise->id]) ?>" class="btn btn-warning mt-1">گالری</a>
+                                                <form class="d-inline" action="<?= route('admin.ads.delete', ['id' => $advertise->id]) ?>" method="post">
                                                     <input type="hidden" name="_method" value="delete">
-                                                    <button type="submit" class="btn btn-danger waves-effect waves-light">حذف</button>
+                                                    <button type="submit" class="btn btn-danger mt-1" >حذف</button>
                                                 </form>
+                                                <a href="<?= route('admin.ads.edit', ['id' => $advertise->id]) ?>" class="btn btn-info mt-1">ویرایش</a>
                                             </td>
                                         </tr>
                                         <?php } ?>

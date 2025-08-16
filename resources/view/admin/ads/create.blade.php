@@ -2,7 +2,7 @@
 
 
 @section('head-tag')
-    <title>ادمین / آگهی</title>
+    <title>ادمین / ساخت آگهی</title>
 @endsection
 
 

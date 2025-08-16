@@ -9,7 +9,7 @@ class Ads extends Model
 {
     use HasSoftDelete;
     protected $table = "ads";
-    protected $fillable = ['title', 'description', 'address', 'amount', 'image', 'floor', 'year', 'storeroom', 'balcony', 'area', 'room', 'toilet', 'parking', 'tag', 'status', 'user_id', 'cat_id', 'sell_status', 'type', 'view'];
+    protected $fillable = ['title', 'description', 'address', 'amount', 'image', 'floor', 'year', 'storeroom', 'balcony', 'area', 'room', 'toilet', 'parking', 'tag', 'status', 'user_id', 'cat_id', 'sell_status', 'type'];
     public function galleries()
     {
         return $this->hasMany("App\Gallery","advertise_id","id");

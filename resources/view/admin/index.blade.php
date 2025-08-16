@@ -20,18 +20,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <h1 class="text-white">دوره آموزش MVC پیشرفته</h1>
-                                <ul class="list-unstyled mt-2 text-white">
-                                    <li>
-                                        <h3>Model</h3>
-                                    </li>
-                                    <li>
-                                        <h3>View</h3>
-                                    </li>
-                                    <li>
-                                        <h3>Controller</h3>
-                                    </li>
-                                </ul>
+                                <h1 class="text-white">Divar</h1>
                             </div>
                         </div>
                     </div>
