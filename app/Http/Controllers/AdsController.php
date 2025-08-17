@@ -60,11 +60,4 @@ class AdsController extends AdminController
         Ads::delete($id);
         return back();
     }
-    public function storeGalleryImage($id)
-    {
-    }
-    public function gallery($id)
-    {
-        return view("admin.ads.gallery");
-    }
 }

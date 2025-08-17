@@ -56,13 +56,14 @@ Route::delete("/admin/blog/delete/{id}","PostController@destroy","admin.blog.del
 
 // ads
 Route::get("/admin/ads","AdsController@index","admin.ads.index");
-Route::get("/admin/ads/gallery/{id}","AdsController@gallery","admin.ads.gallery");
-Route::get("/admin/ads/store-gallery-image/{id}","AdsController@storeGalleryImage","admin.ads.store.gallery.image");
-Route::get("/admin/ads/delete-gallery-image/{gallery_id}","AdsController@deleteGalleryImage","admin.ads.delete.gallery.image");
 Route::get("admin/ads/create","AdsController@create","admin.ads.create");
 Route::post("/admin/ads/store","AdsController@store","admin.ads.store");
 Route::get("/admin/ads/edit/{id}","AdsController@edit","admin.ads.edit");
 Route::put("/admin/ads/update/{id}","AdsController@update","admin.ads.update");
 Route::delete("/admin/ads/delete/{id}","AdsController@destroy","admin.ads.delete");
+// gallery ads
+Route::get("/admin/ads/gallery/{id}","GalleryController@gallery","admin.ads.gallery");
+Route::post("/admin/ads/store-gallery-image/{id}","GalleryController@storeGalleryImage","admin.ads.store.gallery.image");
+Route::get("/admin/ads/delete-gallery-image/{gallery_id}","GalleryController@deleteGalleryImage","admin.ads.delete.gallery.image");
 
 

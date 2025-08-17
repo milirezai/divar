@@ -20,12 +20,12 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">آگهی - گالری</h4>
-                            <span><a href="#" class="btn btn-success">بازگشت</a></span>
+                            <span><a href="<?= route('admin.ads.index') ?>" class="btn btn-success">بازگشت</a></span>
                         </div>
                         <div class="card-content">
                             <div class="card-body card-dashboard">
 
-                                <form class="row" action="#" method="post" enctype="multipart/form-data">
+                                <form class="row" action="<?= route('admin.ads.store.gallery.image',[$ads->id]) ?>" method="post" enctype="multipart/form-data">
 
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
@@ -42,11 +42,16 @@
                                 </form>
                                 <div class="col-md-12 mt-4 pt-4">
                                     <div class="row">
+                                        <?php foreach($galleries as $gallery){ ?>
                                         <div class="col-md-3 text-center">
-                                            <div><img style="width: 100%;" src="../admin-assets/images/elements/apple-watch.png" alt=""></div>
-                                            <a class="btn btn-danger mt-1" href="#">حذف</a>
+                                            <div>
+                                                <img style="width: 100%;" src="<?= asset($gallery->image) ?>" alt="" class="mt-2">
+                                            </div>
+                                            <a class="btn btn-danger mt-1" href="<?= route('admin.ads.delete.gallery.image', [$gallery->id]) ?>">حذف</a>
                                         </div>
+                                        <?php } ?>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
