@@ -1,39 +1,13 @@
 <?php
 use System\Router\Web\Route;
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | Route post
-    |--------------------------------------------------------------------------
-    |
-    |  
-    |  
-    |
-    |--------------------------------------------------------------------------
-    | Route get
-    |--------------------------------------------------------------------------
-    |
-    |
-    |
-    |
-    |--------------------------------------------------------------------------
-    | Route put
-    |--------------------------------------------------------------------------
-    |
-    |
-    |
-    |
-    |--------------------------------------------------------------------------|
-    | Route delete                               
-    |--------------------------------------------------------------------------|
-    |
-    |
-    |
-    |
-    */ 
-    
+// home
 Route::get('/','Home@index','index');
+Route::get("/advertise/show/{id}","Home@show","home.ads.show");
+Route::get("/category/{id}","Home@category","home.ads.category");
+Route::get("/status/{status_id}","Home@status","home.ads.status");
+Route::post("/key","Home@search","home.ads.search");
+
 
 # admin routes
 Route::get("/admin","AdminController@index","admin.index");
@@ -61,6 +35,7 @@ Route::post("/admin/ads/store","AdsController@store","admin.ads.store");
 Route::get("/admin/ads/edit/{id}","AdsController@edit","admin.ads.edit");
 Route::put("/admin/ads/update/{id}","AdsController@update","admin.ads.update");
 Route::delete("/admin/ads/delete/{id}","AdsController@destroy","admin.ads.delete");
+
 // gallery ads
 Route::get("/admin/ads/gallery/{id}","GalleryController@gallery","admin.ads.gallery");
 Route::post("/admin/ads/store-gallery-image/{id}","GalleryController@storeGalleryImage","admin.ads.store.gallery.image");

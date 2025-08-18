@@ -1,5 +1,8 @@
 <?php
 namespace App\Http\Controllers;
+use App\Ads;
+use App\Categories;
+use App\Requests\SearchRequest;
 use System\Database\DBBuilder\DBBuilder;
 
 class Home extends Controller
@@ -7,38 +10,34 @@ class Home extends Controller
        
     public function index()
     {
-        return view("welcom",[]);
+        $ads = Ads::all();
+        $categories = Categories::all();
+        return view("app.index",compact('ads','categories'));
     }
 
-    public function Damavand()
+    public function show($id)
     {
-        return "Welcome to the Damavand Framework "."<br>"."
-            A framework based on MVC and object-oriented architecture that can make your work easy and enjoyable to use.";
+        $advertise = Ads::find($id);
+        return view("app.advertise.show",compact('advertise'));
     }
-
-    public function create()
+    public function category($id)
     {
-        echo "create method in HomeController";
+        $ads = Ads::where('cat_id',$id)->get();
+        $categories = Categories::all();
+        return view("app.index",compact('ads','categories'));
     }
-
-    public function store()
+    public function status($status_id)
     {
-        echo "store method in HomeController";
+        $ads = Ads::where('sell_status',$status_id)->get();
+        $categories = Categories::all();
+        return view("app.index",compact('ads','categories'));
     }
-
-    public function edit($id)
+    public function search()
     {
-        echo "edit method in HomeController";
+        $request = new SearchRequest;
+        $ke = $request->all()['search'];
+        $ads = Ads::where('title',$ke)->get();
+        $categories = Categories::all();
+        return view("app.index",compact('ads','categories'));
     }
-
-    public function update($id)
-    {
-        echo "update method in HomeController";
-    }
-
-    public function destroy($id)
-    {
-        echo "destroy method in HomeController";
-    }
-
 }
