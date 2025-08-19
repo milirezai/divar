@@ -41,4 +41,12 @@ Route::get("/admin/ads/gallery/{id}","GalleryController@gallery","admin.ads.gall
 Route::post("/admin/ads/store-gallery-image/{id}","GalleryController@storeGalleryImage","admin.ads.store.gallery.image");
 Route::get("/admin/ads/delete-gallery-image/{gallery_id}","GalleryController@deleteGalleryImage","admin.ads.delete.gallery.image");
 
+// comment
+Route::get("/admin/comments","CommentController@index","admin.comment.index");
+Route::get("/admin/comments/show/{id}","CommentController@show","admin.comment.show");
+Route::get("/admin/comments/approved/{id}","CommentController@approved","admin.comment.approved");
+Route::post("/admin/comments/answer/{id}","CommentController@answer","admin.comment.answer");
+
+
+
 
