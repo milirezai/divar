@@ -36,7 +36,7 @@ class User extends Model
     | that need filling
     |
     */
-     protected $fillable= [];
+    protected $fillable = ['email', 'first_name', 'last_name', 'avatar', 'status', 'is_active', 'password', 'verify_token', 'user_type', 'remember_token', 'remember_token_expire'];
 
     /*
     |--------------------------------------------------------------------------
@@ -83,10 +83,4 @@ class User extends Model
     | They are automatically quantified
     |
     */
-     protected $createdAT= 'createdAT';
-
-     protected $updatedAT= 'updatedAT';
-
-     protected $deletedAT= null;
-    
 }

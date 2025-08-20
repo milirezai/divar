@@ -15,7 +15,6 @@ class Upload
             {
                 die("Could not create photo path!!!");
             }
-
         }
         is_writable($path);  # برسی اینگه این مسیر قابل نوشتن هستن یا ن
         $manager = new ImageManager(['driver' => 'GD']);

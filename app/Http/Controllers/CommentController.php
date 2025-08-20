@@ -22,14 +22,8 @@ class CommentController extends AdminController
     public function approved($id)
     {
         $comment = Comment::find($id);
-        if ($comment->approved == 0)
-        {
-            $comment = Comment::update(['id' => $id, 'approved' => 1]);
-        }
-        else
-        {
-            $comment = Comment::update(['id' => $id, 'approved' => 0]);
-        }
+        $approved = $comment->approved == 0 ? 1 : 0;
+        Comment::update(['id' => $id, 'approved' => $approved]);
         return back();
     }
     public function answer($id)

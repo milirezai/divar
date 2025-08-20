@@ -47,6 +47,9 @@ Route::get("/admin/comments/show/{id}","CommentController@show","admin.comment.s
 Route::get("/admin/comments/approved/{id}","CommentController@approved","admin.comment.approved");
 Route::post("/admin/comments/answer/{id}","CommentController@answer","admin.comment.answer");
 
+// users
+Route::get("/admin/users","UserController@index","admin.users.index");
+Route::get("/admin/users/status/{id}","UserController@active","admin.users.status");
 
 
 
