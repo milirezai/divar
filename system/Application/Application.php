@@ -25,7 +25,7 @@ class Application
     private function loadingHelpers()
     {
         require_once dirname(__DIR__) . "/helpers/helpers.php";
-        if (file_exists(dirname(dirname(__DIR__)) . "/app/Http/helpers/helpers.php"))
+        if (file_exists(dirname(dirname(__DIR__))."/app/Http/helpers/helpers.php"))
         {
             require_once dirname(dirname(__DIR__)) . "/app/Http/helpers/helpers.php";
         }

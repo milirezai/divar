@@ -1,5 +1,6 @@
 <?php
 
+
 function view($dir,$vars=[])
 {
     $viewBuilder = new \System\View\ViewBuilder();
@@ -115,8 +116,6 @@ function currentDomain()
     return $httpProtocol.$currentUrl;
 }
 
-
-
 function back()
 {
     $http_referer= isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null;
@@ -206,10 +205,8 @@ function array_dot($array, $return_array = array(), $return_key = '') {
 
 function currentUrl()
 {
-   return currentDomain().$_SERVER['REQUEST_URI'];
+    return currentDomain().$_SERVER['REQUEST_URI'];
 }
-
-
 function redirect($url)
 {
     $url = trim($url, '/ ');
@@ -218,16 +215,7 @@ function redirect($url)
     exit;
 }
 
-function fileUpload($file,$name,$path)
+function move($file, $path, $name, $width = null, $height = null)
 {
-    $target_dir = $path;
-    $target_file = $target_dir .
-        basename($file["name"]);
-
-    if(move_uploaded_file($file["tmp_name"], $target_file)) {
-        return "The file ".basename($file["name"]). " has been uploaded.";
-    }
-    else {
-        return "Sorry, there was an error uploading your file.";
-    }
+    return System\Service\Support\Upload\Image\ImageUpload::move($file, $path, $name, $width = null, $height = null);
 }

@@ -49,7 +49,4 @@ Route::post("/admin/comments/answer/{id}","CommentController@answer","admin.comm
 
 // users
 Route::get("/admin/users","UserController@index","admin.users.index");
-Route::get("/admin/users/status/{id}","UserController@active","admin.users.status");
-
-
-
+Route::get("/admin/users/status/{id}","UserController@status","admin.users.status");

@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Ads;
 use App\Categories;
 use App\Http\Controllers\AdminController;
-use App\Http\Services\Upload;
-use App\Requests\Admin\AdsRequest;
+use App\Http\Request\Admin\AdsRequest;
 use System\Auth\Auth;
 
 class AdsController extends AdminController
@@ -34,7 +33,7 @@ class AdsController extends AdminController
         $inputs['user_id'] = Auth::user()->id;
         $path = 'imags/ads/'.date('Y/M/d/');
         $name_image=date('Y_m_d_H_i_s_').rand(10,99);
-        $inputs['image']=Upload::image($request->file('image'), $path, $name_image, 1080, 800);
+        $inputs['image']=$request->move($request->file('image'), $path, $name_image);
         Ads::create($inputs);
         return redirect('/admin/ads');
     }
@@ -48,8 +47,7 @@ class AdsController extends AdminController
         {
             $path = 'imags/ads/'.date('Y/M/d/');
             $name_image=date('Y_m_d_H_i_s_').rand(10,99);
-            $inputs['image']=Upload::image($request->file('image'), $path, $name_image, 1080, 800);
-
+            $inputs['image']=$request->move($request->file('image'), $path, $name_image);
         }
         $inputs['id'] = $id;
         Ads::update($inputs);

@@ -3,8 +3,8 @@ namespace App\Http\Controllers;
 
 use App\Ads;
 use App\Gallery;
-use App\Http\Services\Upload;
-use App\Requests\Admin\GalleryRequest;
+use App\Http\Request\Admin\GalleryRequest;
+
 
 class GalleryController extends AdminController
 {
@@ -16,11 +16,11 @@ class GalleryController extends AdminController
     }
     public function storeGalleryImage($id)
     {
-        $request = new GalleryRequest;
+        $request = new GalleryRequest();
         $file = $request->file('image');
         $path = 'imags/ads/gallery/'.date('Y/M/d/');
         $name_image=date('Y_m_d_H_i_s_').rand(10,99);
-        $inputs['image']=Upload::image($file, $path, $name_image, 1080, 800);
+        $inputs['image']= $request->move($file,$path,$name_image,350,400);
         $inputs['advertise_id'] = $id;
         Gallery::create($inputs);
         return back();

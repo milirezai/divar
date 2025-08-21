@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Http\Controllers\AdminController;
-use App\Requests\Admin\CommentRequest;
+use App\Http\Request\Admin\CommentRequest;
 use System\Auth\Auth;
 
 class CommentController extends AdminController

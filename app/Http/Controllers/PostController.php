@@ -2,11 +2,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\AdminController;
+use App\Http\Request\Admin\PostRequest;
 use App\Post;
-use App\Requests\Admin\PostRequest;
 use App\Categories;
 use System\Auth\Auth;
-use App\Http\Services\Upload;
+use System\Service\Support\Upload\Image\ImageUpload;
 
 class PostController extends AdminController
 {
@@ -27,7 +27,7 @@ class PostController extends AdminController
         $inputs['user_id'] = Auth::user()->id;
         $path = 'imags/posts/'.date('Y/M/d/');
         $name_image=date('Y_m_d_H_i_s_').rand(10,99);
-        $inputs['image']=Upload::image($request->file('image'), $path, $name_image, 1080, 800);
+        $inputs['image']= move($request->file('image'), $path, $name_image);
         Post::create($inputs);
         return redirect("admin/blog");
     }
@@ -47,7 +47,7 @@ class PostController extends AdminController
         {
             $path = 'imags/posts/'.date('Y/M/d/');
             $name_image=date('Y_m_d_H_i_s_').rand(10,99);
-            $inputs['image']=Upload::image($file, $path, $name_image, 1080, 800);
+            $inputs['image']=ImageUpload::move($file, $path, $name_image);
         }
         $inputs['user_id'] = Auth::user()->id;
         Post::update($inputs);

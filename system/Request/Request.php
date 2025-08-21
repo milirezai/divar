@@ -6,10 +6,11 @@ namespace System\Request;
 use System\Request\Traits\HasFileValidationRules;
 use System\Request\Traits\HasRunValidation;
 use System\Request\Traits\HasValidationRules;
+use System\Request\Traits\Upload;
 
 class Request
 {
-    use HasFileValidationRules,HasRunValidation,HasValidationRules;
+    use HasFileValidationRules,HasRunValidation,HasValidationRules,Upload;
     protected $errorExist = false;
     protected $request;
     protected $files = null;
@@ -67,6 +68,4 @@ class Request
     public function all(){
        return $this->request;
     }
-
-
 }

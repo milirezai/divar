@@ -3,10 +3,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use System\Auth\Auth;
 
-
-use App\Category;
-use App\User;
-
 class AdminController extends Controller
 {
     public function __construct()

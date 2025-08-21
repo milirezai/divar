@@ -25,6 +25,7 @@ class ComposerStaticInit8d070178755c320c69f93ee4800660ef
         array (
             'Psr\\Http\\Message\\' => 17,
             'PhpOption\\' => 10,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'I' => 
         array (
@@ -70,6 +71,10 @@ class ComposerStaticInit8d070178755c320c69f93ee4800660ef
         'PhpOption\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Intervention\\Image\\' => 
         array (

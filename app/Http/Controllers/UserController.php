@@ -13,11 +13,12 @@ class UserController extends AdminController
         $users = User::all();
         return view('admin.user.index',compact('users'));
     }
-    public function active($id)
+    public function status($id)
     {
         $user = User::find($id);
-        $active = $user->is_active == 0 ? 1 : 0;
-        User::update(['id' => $id , 'is_active' => $active]);
+        $status = $user->is_active == 0 ? 1 : 0;
+        $user->is_active = $status;
+        $user->save();
         return back();
     }
 }

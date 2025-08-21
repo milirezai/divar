@@ -5,7 +5,7 @@ use Dotenv\Dotenv;
 
 class Env
 {
-    public static function get($config)
+    public  function get($config)
     {
         $dotenv = Dotenv::createImmutable(dirname(dirname(__DIR__)));
         $dotenv->load();

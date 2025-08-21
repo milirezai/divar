@@ -2,8 +2,8 @@
 namespace App\Http\Controllers;
 use App\Ads;
 use App\Categories;
-use App\Requests\SearchRequest;
-use System\Database\DBBuilder\DBBuilder;
+use App\Http\Request\SearchRequest;
+
 
 class Home extends Controller
 {
@@ -34,7 +34,7 @@ class Home extends Controller
     }
     public function search()
     {
-        $request = new SearchRequest;
+        $request = new SearchRequest();
         $ke = $request->all()['search'];
         $ads = Ads::where('title',$ke)->get();
         $categories = Categories::all();
