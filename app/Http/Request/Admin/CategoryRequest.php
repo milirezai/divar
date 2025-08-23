@@ -5,7 +5,7 @@ use System\Request\Request;
 
 class CategoryRequest extends Request
 {
-    public function rules()
+    protected function rules()
     {
         return
             [

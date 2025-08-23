@@ -1,6 +1,5 @@
 <?php
 
-
 function view($dir,$vars=[])
 {
     $viewBuilder = new \System\View\ViewBuilder();
@@ -93,9 +92,16 @@ function error($name, $msg = null)
     }
 }
 
-function erororExists($name)
+function erororExists($name = null)
 {
-    return isset($_SESSION["temporary_errorFlash"][$name]) === true ? true : false;
+    if ($name === null)
+    {
+        return isset($_SESSION["temporary_errorFlash"]) === true ? count($_SESSION["temporary_errorFlash"]) : false;
+    }
+    else
+    {
+        return isset($_SESSION["temporary_errorFlash"][$name]) === true ? true : false;
+    }
 }
 
 function errorAll()

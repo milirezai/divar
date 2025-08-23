@@ -12,7 +12,6 @@
     |
     */
 
-use Dotenv\Parser\Value;
 
 function active_sidebar($url, $contain = true)
 {
@@ -34,5 +33,24 @@ function errorText($name)
 function olrOrValue($name,$value)
 {
     return empty(old($name)) ? $value : old($name) ;
+}
+
+function sendMail($email, $subject, $msg)
+{
+    $mailservice = new App\Http\Services\MailService();
+    $mailservice->send($email, $subject, $msg);
+}
+
+function msgEmail($token)
+{
+    $msg =
+        '
+        <h2>divar</h2>
+       <p>کاربر گرامی ثبت  نام شما با موفقیت انجام  شد برای فعال سازی حساب کاربری خود روی لینک زیر کلیک کنید</p>
+       <p style="text-align: center">
+       <a href="'.route('auth.activation', [$token]).'">فعال سازی حساب کاربری</a>
+       </p>
+       ';
+    return $msg;
 }
 

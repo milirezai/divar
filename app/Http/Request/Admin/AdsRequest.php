@@ -6,7 +6,7 @@ use System\Request\Request;
 
 class AdsRequest extends Request
 {
-    public function rules()
+    protected function rules()
     {
         if(methodField() == 'put'){
             return [

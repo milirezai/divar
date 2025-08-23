@@ -1,15 +1,15 @@
 <?php
+
 namespace App\Http\Services;
 
-use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use System\Config\Config;
 
-
 class MailService
 {
-    public static function send($emailAddress, $subject, $body)
+    public function send($emailAddress, $subject, $body)
     {
         $mail = new PHPMailer(true);
 
@@ -17,7 +17,7 @@ class MailService
 
             $mail->CharSet = 'UTF-8';
             //Server settings
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $mail->SMTPDebug = 0;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = Config::get('mail.SMTP.Host');                     //Set the SMTP server to send through
             $mail->SMTPAuth   = Config::get('mail.SMTP.SMTPAuth');                                   //Enable SMTP authentication
@@ -35,11 +35,10 @@ class MailService
             $mail->Subject = $subject;
             $mail->Body  = $body;
 
-            $result = $mail->send();
-            return $result;
+            $mail->send();
+            return true;
         } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            return $mail->ErrorInfo;
         }
-
     }
 }

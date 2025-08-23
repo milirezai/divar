@@ -50,3 +50,8 @@ Route::post("/admin/comments/answer/{id}","CommentController@answer","admin.comm
 // users
 Route::get("/admin/users","UserController@index","admin.users.index");
 Route::get("/admin/users/status/{id}","UserController@status","admin.users.status");
+
+// auth
+Route::get("/register","auth\RegisterController@show","auth.register.show");
+Route::post("/register","auth\RegisterController@register","auth.register");
+Route::get("/activation/{token}","auth\RegisterController@activation","auth.activation");

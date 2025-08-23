@@ -28,6 +28,14 @@ trait HasValidationRules
             } elseif ($rule == 'date') {
                 $this->date($name);
             }
+            elseif ($rule == 'confirmed'){
+                $this->confirm($name);
+            } elseif (strpos($rule, "unique:") === 0) {
+                $rule = str_replace('unique:', "", $rule);
+                $rule = explode(',', $rule);
+                $key = isset($rule[1]) == false ? null : $rule[1];
+                $this->unique($name, $rule[0], $key);
+            }
         }
     }
 
@@ -146,6 +154,39 @@ trait HasValidationRules
                 }
             }
         }
+    }
+
+    public function unique($name, $table, $field = "id")
+    {
+        if($this->checkFieldExist($name)){
+            if($this->checkFirstError($name)){
+                $value = $this->$name;
+                $sql = "SELECT COUNT(*) FROM $table WHERE $field = ?";
+                $statement = DBConnection::dbConnection()->prepare($sql);
+                $statement->execute([$value]);
+                $result = $statement->fetchColumn();
+                if($result != 0){
+                    $this->setError($name,"$name must be unique ");
+                }
+            }
+        }
+    }
+
+    protected function confirm($name)
+    {
+        if($this->checkFieldExist($name))
+        {
+            $filedName = 'confirm_'.$name;
+            if (!isset($this->$filedName))
+            {
+                $this->setError($name,"$name not exists");
+            }
+            elseif ($this->$filedName != $this->$name)
+            {
+                $this->setError($name,"The $name are not the same");
+            }
+        }
+
     }
 
 

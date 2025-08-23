@@ -12,15 +12,14 @@ return
     |
     */
     'SMTP' => [
-        'Host'       => '',
+        'Host'       => 'smtp.gmail.com',
         'SMTPAuth'   => true,
-        'Username'   => '33',
-        'Password'   => '22',
+        'Username'   => 'monarchframework@gmail.com',
+        'Password'   => 'wkbk vlkz qowx rqpe',
         'Port'       => 587,
         'setFrom'    => [
-            'mail'  =>  'support@amlak.com',
-            'name'  =>  'test'
+            'mail'  =>  'monarchframework@gmail.com',
+            'name'  =>  'Monarch'
         ]
     ]
-
 ];

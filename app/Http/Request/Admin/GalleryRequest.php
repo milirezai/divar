@@ -6,7 +6,7 @@ use System\Request\Request;
 
 class GalleryRequest extends Request
 {
-    public function rules()
+    protected function rules()
     {
         return
             [
