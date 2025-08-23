@@ -3,10 +3,36 @@ use System\Router\Web\Route;
 
 // home
 Route::get('/','Home@index','index');
+Route::get('/home','Home@index','index');
+// home show-ads
 Route::get("/advertise/show/{id}","Home@show","home.ads.show");
+// home category-search
 Route::get("/category/{id}","Home@category","home.ads.category");
+// home status-search
 Route::get("/status/{status_id}","Home@status","home.ads.status");
-Route::post("/key","Home@search","home.ads.search");
+// home key-search
+Route::post("/search-key","Home@search","home.ads.search");
+// about
+Route::get('/about','Home@about','home.about');
+
+
+// user-panel
+Route::get('/my_panel','UserController@index','user.panel');
+Route::get('/my_panel/store-ads','UserController@showFormStoreAds','user.panel.showFormStoreAds');
+
+
+// blog
+Route::get('/blog','BlogController@index','blog.index');
+
+
+
+
+
+
+
+
+
+
 
 
 # admin routes
@@ -55,3 +81,10 @@ Route::get("/admin/users/status/{id}","UserController@status","admin.users.statu
 Route::get("/register","auth\RegisterController@show","auth.register.show");
 Route::post("/register","auth\RegisterController@register","auth.register");
 Route::get("/activation/{token}","auth\RegisterController@activation","auth.activation");
+Route::get("/login","auth\LoginController@show","auth.login.show");
+Route::post("/login","auth\LoginController@login","auth.login");
+Route::get("/forgot","auth\ForgotController@show","auth.forgot.show");
+Route::post("/forgot","auth\ForgotController@forgot","auth.forgot");
+Route::get("/reset-password/{token}","auth\ResetPasswordController@show","auth.reset-password.show");
+Route::post("/reset-password/{token}","auth\ResetPasswordController@resetPassword","auth.reset-password");
+Route::get("/logout","auth\LogoutController@logout","auth.logout");

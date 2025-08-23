@@ -72,21 +72,26 @@ class Auth
     {
 
         $user= User::where("email",$email)->get();
-        if (empty($user))
+        $user = $user[0];
+        if (!empty($user))
         {
-            error("login","There is no user with this email!");
-            return false;
-        }
-        if (password_verify($password,$user[0]->password) and $user[0]->is_active == 1)
-        {
-            Session::set("user",$user[0]->id);
-            return true;
+            $password = md5($password);
+            if ($user->password === $password)
+            {
+                Session::set("user",$user->id);
+                return true;
+            }
+            else
+            {
+                error("login","Zamzam is the wrong password.");
+                return false;
+            }
         }
         else
         {
-            error("login","The password is incorrect or the user is inactive!");
+            error("login","There is no user with this email.");
+            return false;
         }
-
     }
 
     private function loginByIdMethod($id)

@@ -26,7 +26,7 @@
                                     <span><img class="round" src="<?= asset(\System\Auth\Auth::user()->avatar) ?>" alt="avatar" height="40" width="40"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href=""><i class="feather icon-power"></i> خروج</a>
+                                <a class="dropdown-item" href="<?= route('auth.logout') ?>"><i class="feather icon-power"></i> خروج</a>
                             </div>
                         </li>
 

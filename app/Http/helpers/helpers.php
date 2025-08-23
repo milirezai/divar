@@ -1,6 +1,6 @@
 <?php
 
-
+use Morilog\Jalali\Jalalian;
     /*
     |--------------------------------------------------------------------------
     |  Helper functions
@@ -41,7 +41,7 @@ function sendMail($email, $subject, $msg)
     $mailservice->send($email, $subject, $msg);
 }
 
-function msgEmail($token)
+function activationEmailMessage($token)
 {
     $msg =
         '
@@ -54,3 +54,22 @@ function msgEmail($token)
     return $msg;
 }
 
+function passwordRecoveryMsg($token)
+{
+    $msg =
+        '
+        <h2>divar</h2>
+       <p>کاربر گرامی  برای تغییر رمز عبور حساب کاربری خود روی لینک زیر کلیک کنید</p>
+       <p style="text-align: center">
+       <a href="'.route('auth.reset-password.show', [$token]).'">بازیابی رمز عبور</a>
+       </p>
+       ';
+    return $msg;
+}
+
+function solarDate($date)
+{
+    $date = Jalalian::now();
+    $date = Jalalian::forge($date)->format('date');
+    return $date;
+}

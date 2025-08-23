@@ -23,9 +23,9 @@ class RegisterController
         $inputs['is_active'] = 0;
         $inputs['user_type'] = 'user';
         $inputs['status'] = 0;
-        $inputs['password'] = password_hash($request->password, PASSWORD_DEFAULT);
+        $inputs['password'] = md5($request->password);
         User::create($inputs);
-        sendMail($inputs['email'], 'فعال سازی حساب کاربری', msgEmail($inputs['verify_token']));
+        sendMail($inputs['email'], 'فعال سازی حساب کاربری', activationEmailMessage($inputs['verify_token']));
         return redirect($this->redirectTo);
     }
     public function activation($token)

@@ -79,7 +79,7 @@
                                                 </fieldset>
                                             </div>
                                         </div>
-                                        <a href="" class="btn btn-outline-primary float-left btn-inline mb-50">ورود</a>
+                                        <a href="<?= route('auth.login.show') ?>" class="btn btn-outline-primary float-left btn-inline mb-50">ورود</a>
                                         <button type="submit" class="btn btn-primary float-right btn-inline mb-50">ثبت اطلاعات</button>
                                     </form>
                                 </div>

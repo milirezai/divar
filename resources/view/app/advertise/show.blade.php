@@ -52,5 +52,5 @@
         <!-- img adver -->
         <div class="imgAdverPage"></div>
     </main>
-    <div class="textAdver"><?= $advertise->description ?></div>
+    <div class="textAdver"><?= html_entity_decode($advertise->description) ?></div>
 @endsection

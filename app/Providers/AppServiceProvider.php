@@ -20,14 +20,7 @@ class AppServiceProvider extends Provider
     */
     public function boot()
     {
-        Composer::view("app.index", function ()
-        {
-            $users = User::all();
-            return 
-            [
-                "sumArea" => $users
-            ];
-        });
+
     }
     
 }

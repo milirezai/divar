@@ -1,24 +1,30 @@
 <?php
-
 namespace App\Http\Controllers;
+use System\Auth\Auth;
 
-use App\Comment;
-use App\Http\Controllers\AdminController;
-use App\User;
-
-class UserController extends AdminController
+class UserController
 {
+    public function __construct()
+    {
+        Auth::check();
+        if (Auth::check())
+        {
+            if (Auth::user()->user_type != 'user')
+            {
+                return redirect('/login');
+            }
+        }
+        else
+        {
+            return redirect('/login');
+        }
+    }
     public function index()
     {
-        $users = User::all();
-        return view('admin.user.index',compact('users'));
+        dd('UserController#index');
     }
-    public function status($id)
+    public function showFormStoreAds()
     {
-        $user = User::find($id);
-        $status = $user->is_active == 0 ? 1 : 0;
-        $user->is_active = $status;
-        $user->save();
-        return back();
+        dd('UserController@showFormStoreAds');
     }
 }

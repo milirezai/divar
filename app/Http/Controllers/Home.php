@@ -10,7 +10,7 @@ class Home extends Controller
        
     public function index()
     {
-        $ads = Ads::all();
+        $ads = Ads::orderBy('created_at','DESC')->get();
         $categories = Categories::all();
         return view("app.index",compact('ads','categories'));
     }
@@ -28,7 +28,8 @@ class Home extends Controller
     }
     public function status($status_id)
     {
-        $ads = Ads::where('sell_status',$status_id)->get();
+        $status = $status_id === 'buying' ? 1 : 0;
+        $ads = Ads::where('sell_status',$status)->orderBy('created_at','DESC')->get();
         $categories = Categories::all();
         return view("app.index",compact('ads','categories'));
     }
@@ -39,5 +40,9 @@ class Home extends Controller
         $ads = Ads::where('title',$ke)->get();
         $categories = Categories::all();
         return view("app.index",compact('ads','categories'));
+    }
+    public function about()
+    {
+        return view('app.about');
     }
 }
